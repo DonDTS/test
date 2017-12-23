@@ -1,0 +1,351 @@
+<?php include $pth['folder']['template'].'bootstrap_menu.php';
+//fadeInLeft fadeInRight fadeInUP fadeInDOWN
+srand((float) microtime() * 10000000);
+$bb_anime = array("fadeInLeft", "fadeInRight", "fadeInUP", "fadeInDOWN");
+$bb_anime_keys = array_rand($bb_anime,2);
+
+$bb_editspase= ($adm && $edit) ? 'col-lg-10 col-lg-offset-1' : 'col-lg-8 col-lg-offset-2';
+?>
+<!DOCTYPE html>
+<html lang="<?php echo $sl;?>">
+<?php
+// if jQuery4CMSimple is installed, include its jQuery library
+if (is_readable($pth['folder']['plugins'].'jquery/jquery.inc.php')) {
+  include_once $pth['folder']['plugins'].'jquery/jquery.inc.php';
+  include_jQuery();
+}
+?>
+<head>
+<?php echo head();?>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="./templates/newtheme/img/favicon.png">
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+<!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+<script type="text/javascript" src="./templates/newtheme/js/parallax-slider/modernizr.custom.28468.js">
+</script>
+    <script type="text/javascript">
+      function MM_swapImgRestore() { //v3.0
+        var i, x, a = document.MM_sr;
+        for (i = 0; a && i < a.length && (x = a[i]) && x.oSrc; i++) x.src = x.oSrc;
+      }
+
+      function MM_preloadImages() { //v3.0
+        var d = document;
+        if (d.images) {
+          if (!d.MM_p) d.MM_p = new Array();
+          var i, j = d.MM_p.length,
+            a = MM_preloadImages.arguments;
+          for (i = 0; i < a.length; i++)
+            if (a[i].indexOf("#") != 0) {
+              d.MM_p[j] = new Image;
+              d.MM_p[j++].src = a[i];
+            }
+        }
+      }
+
+      function MM_findObj(n, d) { //v4.01
+        var p, i, x;
+        if (!d) d = document;
+        if ((p = n.indexOf("?")) > 0 && parent.frames.length) {
+          d = parent.frames[n.substring(p + 1)].document;
+          n = n.substring(0, p);
+        }
+        if (!(x = d[n]) && d.all) x = d.all[n];
+        for (i = 0; !x && i < d.forms.length; i++) x = d.forms[i][n];
+        for (i = 0; !x && d.layers && i < d.layers.length; i++) x = MM_findObj(n, d.layers[i].document);
+        if (!x && d.getElementById) x = d.getElementById(n);
+        return x;
+      }
+
+      function MM_swapImage() { //v3.0
+        var i, j = 0,
+          x, a = MM_swapImage.arguments;
+        document.MM_sr = new Array;
+        for (i = 0; i < (a.length - 2); i += 3)
+          if ((x = MM_findObj(a[i])) != null) {
+            document.MM_sr[j++] = x;
+            if (!x.oSrc) x.oSrc = x.src;
+            x.src = a[i + 2];
+          }
+      }
+    </script>
+  </head>
+
+  <body id="body" onLoad="MM_preloadImages('./templates/newtheme/img/logo_act.png')" <?php echo onload();?>>
+        <div style="min-height: 100vh;display: grid;">
+    <!--header start-->
+    <header class="head-section">
+
+      <div class="navbar navbar-default navbar-static-top container">
+        <div class="navbar-header">
+          <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse" type="button"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <br>
+          <a href="<?php echo $pth['folder']['/']?>index.php" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('logo','','img/logo_act.png',1)"><img src="img/logo.png" alt="Logo"  id="logo"></a> </div>
+        <div class="navbar-collapse collapse">
+          <div class="lg"><?php echo languagemenu();?></div>
+          <ul id="menu" class="nav navbar-nav">
+            <?php echo bootstrap_li($hc,2);?>
+            <li>
+              <?php echo bootstrap_searchbox();?>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <!--header end-->
+
+    <!--breadcrumbs start-->
+    <div class="breadcrumbs">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-sm-4">
+            <h1>
+              <?php echo $title;?>
+            </h1>
+          </div>
+          <div class="col-lg-8 col-sm-8">
+            <ol class="breadcrumb pull-right">
+                <?php echo bootstrap_locator();?>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--breadcrumbs end-->
+
+    <!-- Container start -->
+    <br/>
+
+    <div class="container">
+      <?php echo content();?>
+    <p style="text-align: right"><img src="./img/end.gif" alt="" width="8" height="8"/></p>
+      <br/>
+    </div>
+
+    <!--container end-->
+
+    <!--footer start-->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-sm-3 address wow fadeInUp" data-wow-duration="2s" data-wow-delay=".1s">
+            <h1>
+              Информация
+            </h1>
+            <address>
+              <p> <i class="fa fa-globe pr-10"></i> <?php echo sitemaplink();?></p>
+            <p> <i class="fa fa-phone pr-10"></i> <a href="tel: +7 981 748 44 99 "> +7 981 748 44 99 </a></p>
+              <p> <i class="fa fa-envelope pr-10"></i><a href="?&mailform">написать письмо</a></p>
+              <p><br>
+                <a href="https://www.youtube.com/channel/UCaxys_lmNIuplgrlSC9XtQQ" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('yt','','img/yt_act.png',1)"><img id="yt" src="img/yt.png" alt=""></a></p>
+            </address>
+          </div>
+          <div class="col-lg-3 col-sm-3 wow fadeInUp" data-wow-duration="2s" data-wow-delay=".3s">
+            <h1>В данном разделе</h1>
+            <div class="tweet-box">
+              <i class="page-footer-list"></i><span class="secmenu c8 mw240"><?php echo toc(2,9);?></span></div>
+          </div>
+          <div class="col-lg-3 col-sm-3">
+            <div class="page-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".5s">
+              <h1>
+                Внешний вид
+              </h1>
+              <ul class="page-footer-list"><li>
+                <?=themeswitcher()?>
+              </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-3">
+            <div class="text-footer wow fadeInUp" data-wow-duration="2s" data-wow-delay=".7s">
+              <?php echo newsbox('News04');?>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- footer end -->
+    <!--small footer start -->
+    <footer class="footer-small">
+      <div class="container">
+        <div class="row">
+          <!--<div class="col-lg-6 col-sm-6 pull-right">
+            <ul class="social-link-footer list-unstyled">
+              <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".1s"><a href="https://www.facebook.com/ustalo"><i class="fa fa-facebook"></i></a></li>
+              <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".2s"><a href="https://plus.google.com/u/0/+AlexejSimonenko/posts"><i class="fa fa-google-plus"></i></a></li>
+              <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".4s"><a href="https://vk.com/ustalo"><i class="fa fa-vk"></i></a></li>
+              <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".5s"><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li class="wow flipInX" data-wow-duration="2s" data-wow-delay=".6s"><a href="http://www.sima.spb.ru/_past/index.php?Az/Adres"><i class="fa fa-skype"></i></a></li>
+            </ul>
+          </div>-->
+          <div class="col-md-4">
+            <div class="copyright">
+              <p>&copy; Copyright - Acme Theme by cosmic +<a href="http://www.sima.spb.ru" target="_blank">sima</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--small footer end-->
+    </div>
+    <!-- js placed at the end of the document so the pages load faster
+<script src="templates/newtheme/js/jquery.js">
+</script>
+-->
+<script src="templates/newtheme/js/bootstrap.min.js">
+</script>
+<script type="text/javascript" src="templates/newtheme/js/hover-dropdown.js">
+</script>
+<script defer src="templates/newtheme/js/jquery.flexslider.js">
+</script>
+<script type="text/javascript" src="templates/newtheme/assets/bxslider/jquery.bxslider.js">
+</script>
+
+<script type="text/javascript" src="templates/newtheme/js/jquery.parallax-1.1.3.js">
+</script>
+<script src="templates/newtheme/js/wow.min.js">
+</script>
+<script src="templates/newtheme/assets/owlcarousel/owl.carousel.js">
+</script>
+
+<script src="templates/newtheme/js/jquery.easing.min.js">
+</script>
+<script src="templates/newtheme/js/link-hover.js">
+</script>
+<script src="templates/newtheme/js/superfish.js">
+</script>
+<script type="text/javascript" src="templates/newtheme/js/parallax-slider/jquery.cslider.js">
+</script>
+
+<!--common script for all pages-->
+<script src="templates/newtheme/js/common-scripts.js">
+</script>
+
+<script type="text/javascript">
+
+  jQuery(document).ready(function() {
+
+  $(function() {
+
+    $('#da-slider').cslider({
+      autoplay    : true,
+      bgincrement : 100
+    });
+
+  });
+
+
+  if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){
+  $(".dropdown a,dropdown-menu a").on("click",function(){
+    if ($(this).parent().find(".once").hasClass('once')){
+      $(this).parent().find(".once").removeClass('once');
+      $(this).parent().addClass('open');
+      return false;
+    } else {
+    window.location.href = $(this).attr('href');
+    }
+  });
+};
+
+    $('.bxslider1').bxSlider({
+      minSlides: 5,
+      maxSlides: 6,
+      slideWidth: 360,
+      slideMargin: 2,
+      moveSlides: 1,
+      responsive: true,
+      nextSelector: '#slider-next',
+      prevSelector: '#slider-prev',
+      nextText: 'Onward →',
+      prevText: '← Go back'
+    });
+
+  $('a.info').tooltip();
+
+  $(window).load(function() {
+    $('.flexslider').flexslider({
+      animation: "slide",
+      start: function(slider) {
+        $('body').removeClass('loading');
+      }
+    });
+  });
+
+
+    $("#owl-demo").owlCarousel({
+
+      items : 4
+
+    });
+
+    jQuery('ul.superfish').superfish();
+  });
+
+  wow = new WOW(
+    {
+      boxClass:     'wow',      // default
+      animateClass: 'animated', // default
+      offset:       0          // default
+    }
+  )
+    wow.init();
+</script>
+
+
+<script>
+
+
+
+  $(window).load(function() {
+    $('[data-zlname = reverse-effect]').mateHover({
+      position: 'y-reverse',
+      overlayStyle: 'rolling',
+      overlayBg: '#fff',
+      overlayOpacity: 0.7,
+      overlayEasing: 'easeOutCirc',
+      rollingPosition: 'top',
+      popupEasing: 'easeOutBack',
+      popup2Easing: 'easeOutBack'
+    }
+                                                 );
+  }
+                );
+
+
+
+
+  $(window).scroll(function() {
+    $('#skillz').each(function(){
+      var imagePos = $(this).offset().top;
+      var viewportheight = window.innerHeight;
+      console.log(viewportheight);
+      var topOfWindow = $(window).scrollTop();
+      if (imagePos < topOfWindow+viewportheight) {
+        $('.skill_bar').fadeIn('slow');
+        $('.skill_one').animate({
+          width:'60%'}
+                                , 2000);
+        $('.skill_two').animate({
+          width:'90%'}
+                                , 2000);
+        $('.skill_three').animate({
+          width:'70%'}
+                                  , 1000);
+        $('.skill_four').animate({
+          width:'55%'}
+                                 , 1000);
+        $('.skill_bar_progress p').fadeIn('slow',function(){
+
+        }
+                                         );
+      }
+    }
+                     );
+  }
+                  );
+
+
+</script>
+  </body>
+
+  </html>
