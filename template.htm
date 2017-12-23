@@ -235,18 +235,6 @@ if (is_readable($pth['folder']['plugins'].'jquery/jquery.inc.php')) {
   });
 
 
-  if(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){
-  $(".dropdown a,dropdown-menu a").on("click",function(){
-    if ($(this).parent().find(".once").hasClass('once')){
-      $(this).parent().find(".once").removeClass('once');
-      $(this).parent().addClass('open');
-      return false;
-    } else {
-    window.location.href = $(this).attr('href');
-    }
-  });
-};
-
     $('.bxslider1').bxSlider({
       minSlides: 5,
       maxSlides: 6,
